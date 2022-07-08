@@ -1,0 +1,146 @@
+
+ex1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000c6  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000011a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  0000011a  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000014c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000030  00000000  00000000  00000188  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000005ec  00000000  00000000  000001b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000578  00000000  00000000  000007a4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000020d  00000000  00000000  00000d1c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000058  00000000  00000000  00000f2c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000002e5  00000000  00000000  00000f84  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000049  00000000  00000000  00001269  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000020  00000000  00000000  000012b2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 36 00 	jmp	0x6c	; 0x6c <__vector_1>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 58 00 	call	0xb0	; 0xb0 <main>
+  64:	0c 94 61 00 	jmp	0xc2	; 0xc2 <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <__vector_1>:
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+/* External INT0 Interrupt Service Routine */
+ISR(INT0_vect)
+{
+  6c:	1f 92       	push	r1
+  6e:	0f 92       	push	r0
+  70:	0f b6       	in	r0, 0x3f	; 63
+  72:	0f 92       	push	r0
+  74:	11 24       	eor	r1, r1
+  76:	8f 93       	push	r24
+  78:	9f 93       	push	r25
+	PORTC = PORTC ^ (1<<PC0); //toggle led state
+  7a:	95 b3       	in	r25, 0x15	; 21
+  7c:	81 e0       	ldi	r24, 0x01	; 1
+  7e:	89 27       	eor	r24, r25
+  80:	85 bb       	out	0x15, r24	; 21
+}
+  82:	9f 91       	pop	r25
+  84:	8f 91       	pop	r24
+  86:	0f 90       	pop	r0
+  88:	0f be       	out	0x3f, r0	; 63
+  8a:	0f 90       	pop	r0
+  8c:	1f 90       	pop	r1
+  8e:	18 95       	reti
+
+00000090 <INT0_Init>:
+
+/* External INT0 enable and configuration function */
+void INT0_Init(void)
+{
+	SREG  &= ~(1<<7);                   // Disable interrupts by clearing I-bit
+  90:	8f b7       	in	r24, 0x3f	; 63
+  92:	8f 77       	andi	r24, 0x7F	; 127
+  94:	8f bf       	out	0x3f, r24	; 63
+	DDRD  &= (~(1<<PD2));               // Configure INT0/PD2 as input pin
+  96:	81 b3       	in	r24, 0x11	; 17
+  98:	8b 7f       	andi	r24, 0xFB	; 251
+  9a:	81 bb       	out	0x11, r24	; 17
+	GICR  |= (1<<INT0);                 // Enable external interrupt pin INT0
+  9c:	8b b7       	in	r24, 0x3b	; 59
+  9e:	80 64       	ori	r24, 0x40	; 64
+  a0:	8b bf       	out	0x3b, r24	; 59
+	MCUCR |= (1<<ISC00) | (1<<ISC01);   // Trigger INT0 with the raising edge
+  a2:	85 b7       	in	r24, 0x35	; 53
+  a4:	83 60       	ori	r24, 0x03	; 3
+  a6:	85 bf       	out	0x35, r24	; 53
+	SREG  |= (1<<7);                    // Enable interrupts by setting I-bit
+  a8:	8f b7       	in	r24, 0x3f	; 63
+  aa:	80 68       	ori	r24, 0x80	; 128
+  ac:	8f bf       	out	0x3f, r24	; 63
+  ae:	08 95       	ret
+
+000000b0 <main>:
+}
+
+int main(void)
+{
+	INT0_Init();              // Enable external INT0
+  b0:	0e 94 48 00 	call	0x90	; 0x90 <INT0_Init>
+
+	DDRC  = DDRC | (1<<PC0);  // Configure pin PC0 in PORTC as output pin
+  b4:	84 b3       	in	r24, 0x14	; 20
+  b6:	81 60       	ori	r24, 0x01	; 1
+  b8:	84 bb       	out	0x14, r24	; 20
+	PORTC = PORTC | (1<<PC0); // Initialization Led is off at the beginning(Negative Logic)
+  ba:	85 b3       	in	r24, 0x15	; 21
+  bc:	81 60       	ori	r24, 0x01	; 1
+  be:	85 bb       	out	0x15, r24	; 21
+  c0:	ff cf       	rjmp	.-2      	; 0xc0 <main+0x10>
+
+000000c2 <_exit>:
+  c2:	f8 94       	cli
+
+000000c4 <__stop_program>:
+  c4:	ff cf       	rjmp	.-2      	; 0xc4 <__stop_program>
