@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="1">
-  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff450000003b0000009504000001030000</PLACEMENT>
+  <PLACEMENT>2c0000000000000001000000ffffffffffffffffffffffffffffffff140000000000000064040000c6020000</PLACEMENT>
   <WINDOW type="default" module="STARTUP"/>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
-   <POPUP w="800" x="68" flags="00000002" y="129" h="200" pid="0" iid="-1">
+   <POPUP w="800" x="96" flags="00000002" y="165" h="200" pid="0" iid="-1">
     <PROPERTIES>
      <ITEM name="Message Column Width">663</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
@@ -15,7 +15,7 @@
      <ITEM name="Version">100</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="350" x="88" flags="00000032" y="149" h="200" pid="1" iid="-1">
+   <POPUP w="350" x="116" flags="00000032" y="185" h="200" pid="1" iid="-1">
     <PROPERTIES>
      <ITEM name="Address Column Width">83</ITEM>
      <ITEM name="AutoResize">No</ITEM>
@@ -32,10 +32,13 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="30" x="108" flags="00000008" y="169" h="16" pid="3" iid="1">
+   <POPUP w="695" x="136" flags="00008001" y="205" h="453" pid="0" iid="4">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="128" flags="0000000a" y="189" h="1" pid="10" iid="1">
+   <POPUP w="226" x="156" flags="00000008" y="225" h="215" pid="3" iid="1">
+    <PROPERTIES/>
+   </POPUP>
+   <POPUP w="8" x="176" flags="0000000a" y="245" h="1" pid="10" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -45,7 +48,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="8" x="148" flags="0000000a" y="209" h="32" pid="6" iid="1">
+   <POPUP w="8" x="196" flags="0000000a" y="265" h="32" pid="6" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -55,7 +58,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="168" flags="0000000a" y="229" h="32" pid="7" iid="1">
+   <POPUP w="16" x="216" flags="0000000a" y="285" h="32" pid="7" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -65,7 +68,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="188" flags="00000000" y="249" h="32" pid="14" iid="1">
+   <POPUP w="16" x="236" flags="80000000" y="305" h="32" pid="14" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -75,7 +78,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="208" flags="0000000a" y="269" h="32" pid="4" iid="1">
+   <POPUP w="16" x="256" flags="0000000a" y="325" h="32" pid="4" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -85,7 +88,7 @@
      <ITEM name="TopLineAddress">00000060</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="228" flags="0000000a" y="289" h="8" pid="13" iid="1">
+   <POPUP w="16" x="276" flags="0000000a" y="345" h="8" pid="13" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -95,7 +98,7 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="600" x="248" flags="0000002b" y="309" h="400" pid="1" iid="1">
+   <POPUP w="600" x="296" flags="0000002b" y="328" h="400" pid="1" iid="1">
     <PROPERTIES>
      <ITEM name="CaseSensitive">No</ITEM>
      <ITEM name="DISPADDRS">Yes</ITEM>
@@ -106,7 +109,7 @@
      <ITEM name="nBreakpoints">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="300" x="268" flags="0000000b" y="329" h="300" pid="2" iid="1">
+   <POPUP w="300" x="316" flags="0000000b" y="385" h="300" pid="2" iid="1">
     <PROPERTIES>
      <ITEM name="Address Column Width">94</ITEM>
      <ITEM name="AutoResize">No</ITEM>
