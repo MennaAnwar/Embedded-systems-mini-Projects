@@ -1,0 +1,272 @@
+
+MC1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000118  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000016c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  0000016c  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000019c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000088  00000000  00000000  000001d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000930  00000000  00000000  00000260  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000759  00000000  00000000  00000b90  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000050c  00000000  00000000  000012e9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000e8  00000000  00000000  000017f8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000426  00000000  00000000  000018e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000001f6  00000000  00000000  00001d06  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000058  00000000  00000000  00001efc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 6a 00 	call	0xd4	; 0xd4 <main>
+  64:	0c 94 8a 00 	jmp	0x114	; 0x114 <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <KeyPad_4x3_adjustKeyNumber>:
+
+#if (N_col == 3) 
+
+static uint8 KeyPad_4x3_adjustKeyNumber(uint8 button_number)
+{
+	switch(button_number)
+  6c:	8b 30       	cpi	r24, 0x0B	; 11
+  6e:	41 f0       	breq	.+16     	; 0x80 <KeyPad_4x3_adjustKeyNumber+0x14>
+  70:	8c 30       	cpi	r24, 0x0C	; 12
+  72:	21 f0       	breq	.+8      	; 0x7c <KeyPad_4x3_adjustKeyNumber+0x10>
+  74:	8a 30       	cpi	r24, 0x0A	; 10
+  76:	29 f4       	brne	.+10     	; 0x82 <KeyPad_4x3_adjustKeyNumber+0x16>
+	{
+		case 10: return '*'; // ASCII Code of =
+  78:	8a e2       	ldi	r24, 0x2A	; 42
+  7a:	08 95       	ret
+				 break;
+		case 11: return 0;
+				 break;		
+		case 12: return '#'; // ASCII Code of +
+  7c:	83 e2       	ldi	r24, 0x23	; 35
+  7e:	08 95       	ret
+{
+	switch(button_number)
+	{
+		case 10: return '*'; // ASCII Code of =
+				 break;
+		case 11: return 0;
+  80:	80 e0       	ldi	r24, 0x00	; 0
+				 break;		
+		case 12: return '#'; // ASCII Code of +
+				 break;
+		default: return button_number;								 						
+	}
+} 
+  82:	08 95       	ret
+
+00000084 <KeyPad_getPressedKey>:
+ *******************************************************************************/
+uint8 KeyPad_getPressedKey(void){
+	uint8 col,row;
+	while(1)
+	{
+		for(col=0;col<N_col;col++) /* loop for columns */
+  84:	80 e0       	ldi	r24, 0x00	; 0
+  86:	23 c0       	rjmp	.+70     	; 0xce <KeyPad_getPressedKey+0x4a>
+		{
+			/* 
+			 * each time only one of the column pins will be output and 
+			 * the rest will be input pins include the row pins 
+			 */ 
+			KEYPAD_PORT_DIR = (0b00010000<<col); 
+  88:	20 e1       	ldi	r18, 0x10	; 16
+  8a:	30 e0       	ldi	r19, 0x00	; 0
+  8c:	08 2e       	mov	r0, r24
+  8e:	02 c0       	rjmp	.+4      	; 0x94 <KeyPad_getPressedKey+0x10>
+  90:	22 0f       	add	r18, r18
+  92:	33 1f       	adc	r19, r19
+  94:	0a 94       	dec	r0
+  96:	e2 f7       	brpl	.-8      	; 0x90 <KeyPad_getPressedKey+0xc>
+  98:	2a bb       	out	0x1a, r18	; 26
+			
+			/* 
+			 * clear the output pin column in this trace and enable the internal 
+			 * pull up resistors for the rows pins
+			 */ 
+			KEYPAD_PORT_OUT = (~(0b00010000<<col)); 
+  9a:	20 95       	com	r18
+  9c:	2b bb       	out	0x1b, r18	; 27
+			for(row=0;row<N_row;row++) /* loop for rows */
+  9e:	90 e0       	ldi	r25, 0x00	; 0
+  a0:	13 c0       	rjmp	.+38     	; 0xc8 <KeyPad_getPressedKey+0x44>
+			{
+				if(BIT_IS_CLEAR(KEYPAD_PORT_IN,row)) /* if the switch is press in this row */ 
+  a2:	29 b3       	in	r18, 0x19	; 25
+  a4:	30 e0       	ldi	r19, 0x00	; 0
+  a6:	09 2e       	mov	r0, r25
+  a8:	02 c0       	rjmp	.+4      	; 0xae <KeyPad_getPressedKey+0x2a>
+  aa:	35 95       	asr	r19
+  ac:	27 95       	ror	r18
+  ae:	0a 94       	dec	r0
+  b0:	e2 f7       	brpl	.-8      	; 0xaa <KeyPad_getPressedKey+0x26>
+  b2:	20 fd       	sbrc	r18, 0
+  b4:	08 c0       	rjmp	.+16     	; 0xc6 <KeyPad_getPressedKey+0x42>
+				{
+					#if (N_col == 3)  
+						return KeyPad_4x3_adjustKeyNumber((row*N_col)+col+1); 
+  b6:	29 2f       	mov	r18, r25
+  b8:	22 0f       	add	r18, r18
+  ba:	92 0f       	add	r25, r18
+  bc:	89 0f       	add	r24, r25
+  be:	8f 5f       	subi	r24, 0xFF	; 255
+  c0:	0e 94 36 00 	call	0x6c	; 0x6c <KeyPad_4x3_adjustKeyNumber>
+  c4:	08 95       	ret
+			/* 
+			 * clear the output pin column in this trace and enable the internal 
+			 * pull up resistors for the rows pins
+			 */ 
+			KEYPAD_PORT_OUT = (~(0b00010000<<col)); 
+			for(row=0;row<N_row;row++) /* loop for rows */
+  c6:	9f 5f       	subi	r25, 0xFF	; 255
+  c8:	94 30       	cpi	r25, 0x04	; 4
+  ca:	58 f3       	brcs	.-42     	; 0xa2 <KeyPad_getPressedKey+0x1e>
+ *******************************************************************************/
+uint8 KeyPad_getPressedKey(void){
+	uint8 col,row;
+	while(1)
+	{
+		for(col=0;col<N_col;col++) /* loop for columns */
+  cc:	8f 5f       	subi	r24, 0xFF	; 255
+  ce:	83 30       	cpi	r24, 0x03	; 3
+  d0:	d8 f2       	brcs	.-74     	; 0x88 <KeyPad_getPressedKey+0x4>
+  d2:	d8 cf       	rjmp	.-80     	; 0x84 <KeyPad_getPressedKey>
+
+000000d4 <main>:
+#include "keypad.h"
+
+int main(void)
+{
+	uint8 key_num;
+	UART_init();
+  d4:	0e 94 7c 00 	call	0xf8	; 0xf8 <UART_init>
+	while(1)
+	{
+		key_num = KeyPad_getPressedKey();
+  d8:	0e 94 42 00 	call	0x84	; 0x84 <KeyPad_getPressedKey>
+		if((key_num >= 0) && (key_num <= 7))
+  dc:	88 30       	cpi	r24, 0x08	; 8
+  de:	10 f4       	brcc	.+4      	; 0xe4 <main+0x10>
+		{
+			UART_sendByte(key_num);
+  e0:	0e 94 86 00 	call	0x10c	; 0x10c <UART_sendByte>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  e4:	2f e9       	ldi	r18, 0x9F	; 159
+  e6:	86 e8       	ldi	r24, 0x86	; 134
+  e8:	91 e0       	ldi	r25, 0x01	; 1
+  ea:	21 50       	subi	r18, 0x01	; 1
+  ec:	80 40       	sbci	r24, 0x00	; 0
+  ee:	90 40       	sbci	r25, 0x00	; 0
+  f0:	e1 f7       	brne	.-8      	; 0xea <main+0x16>
+  f2:	00 c0       	rjmp	.+0      	; 0xf4 <main+0x20>
+  f4:	00 00       	nop
+  f6:	f0 cf       	rjmp	.-32     	; 0xd8 <main+0x4>
+
+000000f8 <UART_init>:
+ *                      Functions Definitions                                  *
+ *******************************************************************************/
+void UART_init(void)
+{
+	/* U2X = 1 for double transmission speed */
+	UCSRA = (1<<U2X);
+  f8:	82 e0       	ldi	r24, 0x02	; 2
+  fa:	8b b9       	out	0x0b, r24	; 11
+	 * RXEN  = 1 Receiver Enable
+	 * RXEN  = 1 Transmitter Enable
+	 * UCSZ2 = 0 For 8-bit data mode
+	 * RXB8 & TXB8 not used for 8-bit data mode
+	 ***********************************************************************/ 
+	UCSRB = (1<<RXEN) | (1<<TXEN);
+  fc:	88 e1       	ldi	r24, 0x18	; 24
+  fe:	8a b9       	out	0x0a, r24	; 10
+	 * UPM1:0  = 00 Disable parity bit
+	 * USBS    = 0 One stop bit
+	 * UCSZ1:0 = 11 For 8-bit data mode
+	 * UCPOL   = 0 Used with the Synchronous operation only
+	 ***********************************************************************/ 	
+	UCSRC = (1<<URSEL) | (1<<UCSZ0) | (1<<UCSZ1); 
+ 100:	86 e8       	ldi	r24, 0x86	; 134
+ 102:	80 bd       	out	0x20, r24	; 32
+	
+	/* First 8 bits from the BAUD_PRESCALE inside UBRRL and last 4 bits in UBRRH*/
+	UBRRH = BAUD_PRESCALE>>8;
+ 104:	10 bc       	out	0x20, r1	; 32
+	UBRRL = BAUD_PRESCALE;
+ 106:	8c e0       	ldi	r24, 0x0C	; 12
+ 108:	89 b9       	out	0x09, r24	; 9
+ 10a:	08 95       	ret
+
+0000010c <UART_sendByte>:
+	
+void UART_sendByte(const uint8 data)
+{
+	/* UDRE flag is set when the Tx buffer (UDR) is empty and ready for 
+	 * transmitting a new byte so wait until this flag is set to one */
+	while(BIT_IS_CLEAR(UCSRA,UDRE)){}
+ 10c:	5d 9b       	sbis	0x0b, 5	; 11
+ 10e:	fe cf       	rjmp	.-4      	; 0x10c <UART_sendByte>
+	/* Put the required data in the UDR register and it also clear the UDRE flag as 
+	 * the UDR register is not empty now */	 
+	UDR = data;
+ 110:	8c b9       	out	0x0c, r24	; 12
+ 112:	08 95       	ret
+
+00000114 <_exit>:
+ 114:	f8 94       	cli
+
+00000116 <__stop_program>:
+ 116:	ff cf       	rjmp	.-2      	; 0x116 <__stop_program>
